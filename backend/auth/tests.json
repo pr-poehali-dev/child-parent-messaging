@@ -1,0 +1,30 @@
+{
+  "tests": [
+    {
+      "name": "Send OTP",
+      "method": "POST",
+      "path": "send-otp",
+      "body": {"phone": "+79001234567"},
+      "expectedStatus": 200,
+      "expectedBody": {"sent": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Verify wrong OTP",
+      "method": "POST",
+      "path": "verify-otp",
+      "body": {"phone": "+79001234567", "code": "000000"},
+      "expectedStatus": 400,
+      "expectedBody": {"error": "Неверный или устаревший код"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get me unauthenticated",
+      "method": "GET",
+      "path": "me",
+      "expectedStatus": 401,
+      "expectedBody": {"error": "Не авторизован"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

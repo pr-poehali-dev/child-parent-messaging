@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "Get members unauthenticated",
+      "method": "GET",
+      "path": "members",
+      "expectedStatus": 401,
+      "expectedBody": {"error": "Не авторизован"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
